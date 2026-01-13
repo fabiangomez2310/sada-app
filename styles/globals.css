@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tipografía corporativa */
+body {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  background-color: #f9f9f9; /* fondo claro y profesional */
+  color: #111827; /* gris oscuro para leer fácil */
+}
+
+/* Links */
+a {
+  color: #2563eb; /* azul corporativo */
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Inputs */
+input, select, textarea {
+  border: 1px solid #d1d5db; /* gris claro */
+  border-radius: 0.375rem; /* rounded-md */
+  padding: 0.5rem;
+  width: 100%;
+}
+
+button {
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+}

@@ -55,14 +55,17 @@ export default function ConstitucionForm() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, type, checked, value } = e.target;
+    const target = e.target;
 
-    if (type === "checkbox") {
-      setForm((prev) => ({ ...prev, [name]: checked }));
-    } else if (type === "number" || type === "text") {
-      setForm((prev) => ({ ...prev, [name]: parseNumberInput(value) }));
-    } else if (type === "select-one") {
-      setForm((prev) => ({ ...prev, [name]: Number(value) }));
+    if (target.type === "checkbox") {
+      const t = target as HTMLInputElement;
+      setForm(prev => ({ ...prev, [t.name]: t.checked }));
+    } else if (target.type === "number" || target.type === "text") {
+      const t = target as HTMLInputElement;
+      setForm(prev => ({ ...prev, [t.name]: parseNumberInput(t.value) }));
+    } else if (target.type === "select-one") {
+      const t = target as HTMLSelectElement;
+      setForm(prev => ({ ...prev, [t.name]: Number(t.value) }));
     }
   };
 
@@ -74,7 +77,7 @@ export default function ConstitucionForm() {
 
     try {
       const response = await axios.post<ConstitucionResponse>(
-        "https://sada-api.onrender.com/api/constitucion/calcular",
+         "https://sada-api.onrender.com/api/constitucion/calcular",
         form
       );
       setResult(response.data);
